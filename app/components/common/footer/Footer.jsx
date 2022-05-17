@@ -8,15 +8,15 @@ const navItems = [
     },
     {
         icon: 'explore',
-        link: '/'
+        link: '/explore'
     },
     {
         icon: 'place',
-        link: '/'
+        link: '/place/moscow'
     },
     {
         icon: 'person_outline',
-        link: '/'
+        link: '/profile'
     }
 ];
 
@@ -28,8 +28,9 @@ const Footer = () => {
             <nav>
                 {navItems.map(item =>
                     <button
+                        key={item.icon}
                         className={pathname === item.link ? styles.active : ''}
-                        onClick={() => push(item.link)} key={item.icon}
+                        onClick={() => push(item.link)}
                     >
                         <span className='material-icons-outlined'>{item.icon}</span>
                     </button>

@@ -1,18 +1,31 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import cn from 'classnames';
 import styles from './Filters.module.scss';
 
-const Filters: FC = () => {
-  const cities = [
-    {location: 'Moscow'},
-    {location: 'Novosibirsk'},
-    {location: 'Irkutsk'},
-    {location: 'Vladivostok'},
-  ];
+const cities = [
+  {location: 'Moscow'},
+  {location: 'Novosibirsk'},
+  {location: 'Irkutsk'},
+  {location: 'Vladivostok'},
+  {location: 'St. Petersburg'},
+  {location: 'Ulan-Ude'},
+];
 
+const Filters: FC = () => {
+  const [filter, setFilter] = useState('');
+  console.log('filter', filter)
   return (
     <div className={styles.wrapper}>
       {cities.map(({location}) => (
-          <button key={location}>{location}</button>
+          <button
+            key={location}
+            onClick={() => setFilter(location)}
+            className={cn({
+              [styles.active]: location === filter
+            })}
+          >
+            {location}
+          </button>
         )
       )}
     </div>

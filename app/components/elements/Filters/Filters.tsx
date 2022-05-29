@@ -13,7 +13,7 @@ const cities = [
 
 const Filters: FC = () => {
   const [filter, setFilter] = useState('');
-  console.log('filter', filter)
+
   return (
     <div className={styles.wrapper}>
       {cities.map(({location}) => (

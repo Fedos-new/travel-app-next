@@ -5,6 +5,8 @@ import { IPlace } from '../app/types/place';
 import HeadingSection from '../app/components/elements/Home/HeadingSection/HeadingSection';
 import Search from '../app/components/elements/Search/Search';
 import Filters from '../app/components/elements/Filters/Filters';
+import { API_URL } from '../app/constants/hosts';
+import PopularPlaces from '../app/components/elements/Home/PopularPlaces/PopularPlaces';
 
 interface IHome {
   places: IPlace[];
@@ -17,18 +19,14 @@ const Home: NextPage<IHome> = ({places}) => {
       <div style={{width: '80%', margin: '0 auto'}}>
         <Search/>
         <Filters/>
-        {places.map((place) =>
-          <div key={place.name}>
-            {place.name}
-          </div>
-        )}
+        <PopularPlaces places={places} />
       </div>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch('http://localhost:3000/api/places')
+  const response = await fetch(`${API_URL}/places`)
   const places = await response.json();
 
   return {

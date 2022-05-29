@@ -10,13 +10,15 @@ interface IHome {
 
 const Home: NextPage<IHome> = ({places}) => {
   return (
-    <Layout className={styles.container}>
-      <SearchBar />
-      {places.map((place) =>
-        <div key={place.name}>
-          {place.name}
-        </div>
-      )}
+    <Layout style={styles.container}>
+      <div style={{ width: '80%', margin: '0 auto' }}>
+        <SearchBar/>
+        {places.map((place) =>
+          <div key={place.name}>
+            {place.name}
+          </div>
+        )}
+      </div>
     </Layout>
   )
 }
